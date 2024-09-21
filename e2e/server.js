@@ -6,8 +6,6 @@ const compiler = Webpack(webpackConfig);
 const devServerOptions = { ...webpackConfig.devServer, open: false };
 const server = new WebpackDevServer(devServerOptions, compiler);
 
-const runServer = async () => {
-  await server.start();
-};
-
-runServer();
+server.startCallback(() => {
+  console.log("Starting server on http://localhost:8080");
+});
